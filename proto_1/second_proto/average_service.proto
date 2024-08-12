@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package second_proto;
+option go_package = ".;second_proto";
+
+service AvgService {
+	rpc SendNumber(stream Request) returns (stream AvgResponse) {}
+}
+
+message Request {
+	int32 intValue = 2;
+}
+
+message AvgResponse {
+	float avgValue = 1;
+}

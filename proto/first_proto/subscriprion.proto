@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gopractic.protobuf.first_proto;
+option go_package = ".;first_proto";
+
+import "google/protobuf/timestamp.proto";
+
+service TimeService {
+	rpc StreamTime(Request) returns (stream TimeResponse) {}
+}
+
+message Request {
+	uint32 duration_secs = 2;
+}
+
+message TimeResponse {
+	google.protobuf.Timestamp current_time = 1;
+}
